@@ -6,6 +6,4 @@ Original code was written in C++.
 
 It looked hard to me to understand C++ code. To understand deeply and practice of Kotlin, I re-writeed this to Kotlin.
 
-refer folder under here to see code.
-`https://github.com/kazurof/minute-hour-counter/tree/main/lib/src/main/kotlin/mhc`
-
+refer folder under [`lib/src/main/kotlin/mhc`](lib/src/main/kotlin/mhc) to see the code. 
