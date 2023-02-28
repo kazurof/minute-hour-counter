@@ -32,7 +32,6 @@ class ConveyorQueue(private var maxItems: Int) {
     fun addToBack(count: Int) {
         if (q.size == 0) shift(1) // Make sure q has at least 1 item.
         q[q.size - 1] += count
-//        q[0] += count;
         totalSum += count;
     }
 
