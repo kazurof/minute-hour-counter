@@ -1,0 +1,76 @@
+
+name: build and test and generate report
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - feature/*
+      - main
+
+# apply loose setting for Dependabot
+permissions: write-all
+
+concurrency: 
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+
+jobs:
+  build:
+    env:
+      TZ: Asia/Tokyo
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: show debug message.
+        run: |
+          echo "github.event_name -> " ${{ github.event_name }}
+          echo "github.run_id   -> "${{ github.run_id }}
+          echo "github.head_ref -> "${{ github.head_ref }}
+          echo ${{ github.head_ref || github.run_id }}
+
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: test and generate report
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: lib:koverXmlReport
+
+
+      - name: do detekt
+        uses: gradle/gradle-build-action@v2
+        if: always()
+        with:
+          arguments: lib:detekt
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          junit_files: lib/build/test-results/**/*.xml
+
+      - name: setup reviewdog
+        uses: reviewdog/action-setup@v1
+        if: always()
+        with:
+          reviewdog_version: latest
+
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: always()
+        run: |
+          cat lib/build/reports/detekt/detekt.xml | reviewdog -f=checkstyle -reporter=github-pr-review
+
