@@ -53,7 +53,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         if: always()
         with:
-          arguments: lib:detektMain
+          arguments: lib:detekt
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
@@ -72,5 +72,5 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: always()
         run: |
-          cat lib/build/reports/detekt/main.xml | reviewdog -f=checkstyle -reporter=github-pr-review
+          cat lib/build/reports/detekt/detekt.xml | reviewdog -f=checkstyle -reporter=github-pr-review
 
