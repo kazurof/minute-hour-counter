@@ -1,6 +1,5 @@
 package mhc.attempt3timebucketed
 
-
 import java.time.ZonedDateTime
 
 /**
@@ -16,10 +15,9 @@ class TrailingBucketCounter(numBuckets: Int, private val secsPerBucket: Int) {
         val currentBucket: Long = now.toEpochSecond() / secsPerBucket
         val lastUpdateBucket: Long = lastUpdateTime.toEpochSecond() / secsPerBucket
 
-        buckets.shift(currentBucket - lastUpdateBucket);
-        lastUpdateTime = now;
+        buckets.shift(currentBucket - lastUpdateBucket)
+        lastUpdateTime = now
     }
-
 
     fun add(count: Int, now: ZonedDateTime) {
         update(now)
