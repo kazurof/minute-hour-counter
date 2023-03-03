@@ -17,6 +17,5 @@ class MinuteHourCounterTest {
         TimeUnit.SECONDS.sleep(61)
         assertEquals(0, sut.minuteCount())
         assertEquals(34, sut.hourCount())
-
     }
 }

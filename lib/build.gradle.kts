@@ -20,7 +20,6 @@ plugins {
     id("com.github.ben-manes.versions") version "0.46.0"
 }
 
-
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
@@ -37,7 +36,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     // Use the JUnit 5 integration.
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
 }
@@ -46,7 +45,6 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
-
 
 kover {
     // true to disable instrumentation and all Kover tasks in this project
