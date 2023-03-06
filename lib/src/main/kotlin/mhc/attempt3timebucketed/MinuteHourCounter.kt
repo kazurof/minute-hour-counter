@@ -2,15 +2,19 @@ package mhc.attempt3timebucketed
 
 import java.time.ZonedDateTime
 
+const val NUM_BUCKETS = 60
+
+const val SEC_IN_HOUR = 60
+
 /**
  * Track the cumulative counts over the past minute and over the past hour.
  * Useful, for example, to track recent bandwidth usage.
  */
 class MinuteHourCounter {
 
-    private val minuteCounts = TrailingBucketCounter(60, 1)
-    private val hourCounts = TrailingBucketCounter(60, 60)
-
+    private val minuteCounts = TrailingBucketCounter(NUM_BUCKETS, 1)
+    private val hourCounts = TrailingBucketCounter(NUM_BUCKETS, SEC_IN_HOUR)
+    
     /**
      * Add a new data point (count >= 0).
      * For the next minute, MinuteCount() will be larger by +count.
