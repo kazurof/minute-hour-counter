@@ -14,7 +14,7 @@ class MinuteHourCounter {
 
     private val minuteCounts = TrailingBucketCounter(NUM_BUCKETS, 1)
     private val hourCounts = TrailingBucketCounter(NUM_BUCKETS, SEC_IN_HOUR)
-    
+
     /**
      * Add a new data point (count >= 0).
      * For the next minute, MinuteCount() will be larger by +count.
