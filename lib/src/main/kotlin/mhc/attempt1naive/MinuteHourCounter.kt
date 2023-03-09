@@ -46,5 +46,4 @@ class MinuteHourCounter {
     }
 }
 
-
 data class Event(val count: Int, val time: LocalDateTime)
