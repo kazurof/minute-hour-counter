@@ -11,6 +11,5 @@ class MinuteHourCounterTest {
         assertEquals(1, sut.hourCount())
         sut.add(10)
         assertEquals(11, sut.hourCount())
-
     }
 }

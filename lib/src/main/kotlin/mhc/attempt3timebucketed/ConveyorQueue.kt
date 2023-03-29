@@ -34,5 +34,4 @@ class ConveyorQueue(private var maxItems: Int) {
         q[q.size - 1] += count
         totalSum += count
     }
-
 }
