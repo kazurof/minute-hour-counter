@@ -39,7 +39,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
-    testImplementation("io.mockk:mockk:1.13.4")
+    testImplementation("io.mockk:mockk:1.13.5")
 }
 
 tasks.named<Test>("test") {
