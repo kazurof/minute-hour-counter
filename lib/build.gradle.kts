@@ -36,7 +36,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     // Use the JUnit 5 integration.
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
     testImplementation("io.mockk:mockk:1.13.4")
