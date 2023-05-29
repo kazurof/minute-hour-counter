@@ -16,7 +16,7 @@ plugins {
     `java-library`
 
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
-    id("io.gitlab.arturbosch.detekt") version "1.22.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.0"
     id("com.github.ben-manes.versions") version "0.46.0"
 }
 
